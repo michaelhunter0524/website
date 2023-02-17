@@ -14,15 +14,11 @@ app.get("/", function (req, res) {
 });
 
 app.get("/about", function (req, res) {
-	res.send("About page")
+	res.sendFile('About.html', { root: __dirname });
 });
 
-app.get("/scripts/myCode.js", function (req, res) {
-	res.sendFile('/scripts/myCode.js', { root: __dirname });
-})
+app.use('/views', express.static('views'));
 
-app.get("/images/charleston.jpeg", function (req, res) {
-	res.sendFile('/images/charleston.jpeg', { root: __dirname });
-})
+app.use('/images', express.static('images'));
 
-
+app.use('/scripts', express.static('scripts'));
